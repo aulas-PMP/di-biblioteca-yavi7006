@@ -6,13 +6,10 @@ import javafx.stage.Stage;
 
 public class App extends Application{
 
-    public static void main(String[] args) throws Exception {
-        launch(args);
-    }
-
+    
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("biblioMulti.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("src/biblioMulti.fxml"));
         Parent root = loader.load();
         Controlador controlador = loader.getController();
         controlador.setStage(primaryStage);
@@ -21,4 +18,9 @@ public class App extends Application{
         primaryStage.show();
         
     }
+
+    public static void main(String[] args) throws Exception {
+        launch(args);
+    }
+
 }

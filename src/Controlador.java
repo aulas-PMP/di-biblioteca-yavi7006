@@ -1,12 +1,15 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.MediaView;
@@ -41,7 +44,7 @@ public class Controlador {
     private VBox mediaBox;
 
     @FXML
-    private MenuItem mostrarLat;
+    private CheckMenuItem mostrarLat;
 
     @FXML
     private Button pauseButton;
@@ -66,18 +69,20 @@ public class Controlador {
 
     public void setStage(Stage stage){
         this.stage = stage;
+        /*
         this.boxVelocidad.getItems().addAll("1x","1.25x","1.5x","2x");
-        
+        this.mostrarLat.setSelected(true);
+        */
     }
 
     @FXML
     void mostrarLaterales(ActionEvent event) {
-        if(edicion.isVisible()){
-            edicion.setVisible(false);
-            biblioteca.setVisible(false);
-        } else{
+        if(mostrarLat.isSelected()){
             edicion.setVisible(true);
             biblioteca.setVisible(true);
+        } else{
+            edicion.setVisible(false);
+            biblioteca.setVisible(false);
         }
     }
 
@@ -98,7 +103,14 @@ public class Controlador {
 
     @FXML
     void cambiarVelocidad(ActionEvent event) {
+        String velocidad = this.boxVelocidad.getSelectionModel().getSelectedItem();
+        viewMedia.getMediaPlayer().setRate(Integer.valueOf(velocidad.replace("x", "")));
+    }
 
+    @FXML
+    void cambiarVolumen(MouseDragEvent event) {
+        Double volumen = sliderVolumen.getValue();
+        viewMedia.getMediaPlayer().setVolume(volumen);
     }
 }
 
