@@ -1,15 +1,23 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
 public class Controlador {
+
+    private Stage stage;
+
+    @FXML
+    private MenuItem abrirArchivo;
 
     @FXML
     private MenuBar barraMenu;
@@ -21,7 +29,19 @@ public class Controlador {
     private BorderPane borderPane;
 
     @FXML
+    private ComboBox<String> boxVelocidad;
+
+    @FXML
+    private VBox centerBox;
+
+    @FXML
     private VBox edicion;
+
+    @FXML
+    private VBox mediaBox;
+
+    @FXML
+    private MenuItem mostrarLat;
 
     @FXML
     private Button pauseButton;
@@ -33,6 +53,9 @@ public class Controlador {
     private ProgressBar progressBar;
 
     @FXML
+    private Slider sliderVolumen;
+
+    @FXML
     private Button stopButton;
 
     @FXML
@@ -41,22 +64,41 @@ public class Controlador {
     @FXML
     private MediaView viewMedia;
 
-    private Stage stage;
-
     public void setStage(Stage stage){
         this.stage = stage;
+        this.boxVelocidad.getItems().addAll("1x","1.25x","1.5x","2x");
+        
     }
 
-    public void reanudarVideo(){
-        viewMedia.getMediaPlayer().play();
+    @FXML
+    void mostrarLaterales(ActionEvent event) {
+        if(edicion.isVisible()){
+            edicion.setVisible(false);
+            biblioteca.setVisible(false);
+        } else{
+            edicion.setVisible(true);
+            biblioteca.setVisible(true);
+        }
     }
 
-    public void pausarVideo(){
+    @FXML
+    void pausarVideo(ActionEvent event) {
         viewMedia.getMediaPlayer().pause();
     }
 
-    public void stopVideo(){
+    @FXML
+    void reanudarVideo(ActionEvent event) {
+        viewMedia.getMediaPlayer().play();
+    }
+
+    @FXML
+    void stopVideo(ActionEvent event) {
         viewMedia.getMediaPlayer().stop();
+    }
+
+    @FXML
+    void cambiarVelocidad(ActionEvent event) {
+
     }
 }
 
