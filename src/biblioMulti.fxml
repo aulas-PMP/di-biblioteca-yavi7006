@@ -31,7 +31,7 @@
    <right>
       <VBox fx:id="biblioteca" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
-            <ListView fx:id="lista" prefWidth="140.0" VBox.vgrow="ALWAYS" />
+            <ListView id="viewList" fx:id="lista" prefWidth="140.0" VBox.vgrow="ALWAYS" />
          </children></VBox>
    </right>
    <top>
