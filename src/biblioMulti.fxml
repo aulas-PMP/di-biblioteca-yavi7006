@@ -76,7 +76,7 @@
             <ProgressBar fx:id="progressBar" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="10.0" />
             <HBox alignment="CENTER">
                <children>
-                  <Button id="playButton" fx:id="playButton" mnemonicParsing="false" onAction="#reanudarVideo" text="Play">
+                  <Button id="playButton" fx:id="playButton" mnemonicParsing="false" onAction="#reanudarVideo" stylesheets="@../style/biblioteca.css" text="Play">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></Button>
