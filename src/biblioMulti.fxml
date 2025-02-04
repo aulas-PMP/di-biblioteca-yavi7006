@@ -16,20 +16,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.media.MediaView?>
 
-<BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador">
+<BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador">
    <left>
-      <VBox fx:id="edicion" BorderPane.alignment="CENTER">
+      <VBox fx:id="edicion" prefWidth="140.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Volumen" VBox.vgrow="ALWAYS" />
-            <Slider fx:id="sliderVolumen" blockIncrement="5.0" VBox.vgrow="ALWAYS" />
+            <Slider fx:id="sliderVolumen" blockIncrement="5.0" onMouseDragReleased="#cambiarVolumen" VBox.vgrow="ALWAYS" />
             <Label text="Velocidad" VBox.vgrow="ALWAYS" />
             <ComboBox fx:id="boxVelocidad" onAction="#cambiarVelocidad" VBox.vgrow="ALWAYS" />
+            <Label text="Tamaño" />
+            <ComboBox fx:id="boxTamano" onAction="#cambiarTamano" />
          </children></VBox>
    </left>
    <right>
       <VBox fx:id="biblioteca" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
-            <ListView VBox.vgrow="ALWAYS" />
+            <ListView fx:id="lista" prefWidth="140.0" VBox.vgrow="ALWAYS" />
          </children></VBox>
    </right>
    <top>
@@ -39,7 +41,7 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Archivo">
                   <items>
-                    <MenuItem fx:id="abrirArchivo" mnemonicParsing="false" text="Abrir" />
+                    <MenuItem fx:id="abrirArchivo" mnemonicParsing="false" onAction="#abrirArchivo" text="Abrir" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Biblioteca">
@@ -64,17 +66,17 @@
       </VBox>
    </top>
    <center>
-      <VBox fx:id="centerBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+      <VBox id="centerBox" fx:id="centerBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
             <VBox fx:id="mediaBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                <children>
-                  <MediaView fx:id="viewMedia" fitHeight="300.0" fitWidth="200.0" preserveRatio="false" VBox.vgrow="ALWAYS" />
+                  <MediaView id="viewMedia" fx:id="viewMedia" fitHeight="300.0" fitWidth="200.0" preserveRatio="false" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
-            <ProgressBar fx:id="progressBar" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="10.0" progress="0.0" />
+            <ProgressBar fx:id="progressBar" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="10.0" />
             <HBox alignment="CENTER">
                <children>
-                  <Button fx:id="playButton" mnemonicParsing="false" onAction="#reanudarVideo" text="Play">
+                  <Button id="playButton" fx:id="playButton" mnemonicParsing="false" onAction="#reanudarVideo" text="Play">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></Button>
