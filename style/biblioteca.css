@@ -1,0 +1,14 @@
+#centerbox {
+    -fx-background: red;
+    background: red;
+}
+
+#playButton {
+    -fx-background-color: blue;
+    background-color: blue;
+}
+
+#viewMedia {
+    -fx-background: red;
+    background: red;
+}

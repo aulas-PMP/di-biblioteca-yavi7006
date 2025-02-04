@@ -184,33 +184,34 @@ public class Controlador {
 
     public void libreria(File directorio){
         File[] videos = directorio.listFiles();
-
-        for(File video : videos){
-            if(video.isDirectory()){
-                libreria(video);
-            } else{
-                Button bt = new Button();
-                Media med = new Media(video.getName());
-                double duracion = med.getDuration().toSeconds();
-                int horas = (int) duracion/3600;
-                duracion -= horas*3600;
-                int minutos = (int) duracion/60;
-                duracion -= minutos*60;
-                int segundos = (int) duracion;
-                if(horas>0){
-                    bt.setText(video.getName()+" "+horas+":"+minutos+":"+segundos);
+        if(videos!=null){
+            for(File video : videos){
+                if(video.isDirectory()){
+                    libreria(video);
                 } else{
-                    bt.setText(video.getName()+" "+horas+":"+minutos+":"+segundos);
-                }
-                bt.setOnAction(new EventHandler<ActionEvent>() {
-
-                    @Override
-                    public void handle(ActionEvent arg0) {
-                        setVideo(new File(bt.getText().substring(0, bt.getText().indexOf(" "))));
+                    Button bt = new Button();
+                    Media med = new Media(video.getName());
+                    double duracion = med.getDuration().toSeconds();
+                    int horas = (int) duracion/3600;
+                    duracion -= horas*3600;
+                    int minutos = (int) duracion/60;
+                    duracion -= minutos*60;
+                    int segundos = (int) duracion;
+                    if(horas>0){
+                        bt.setText(video.getName()+" "+horas+":"+minutos+":"+segundos);
+                    } else{
+                        bt.setText(video.getName()+" "+horas+":"+minutos+":"+segundos);
                     }
-                    
-                });
-                lista.getItems().add(bt);
+                    bt.setOnAction(new EventHandler<ActionEvent>() {
+
+                        @Override
+                        public void handle(ActionEvent arg0) {
+                            setVideo(new File(bt.getText().substring(0, bt.getText().indexOf(" "))));
+                        }
+                        
+                    });
+                    lista.getItems().add(bt);
+                }
             }
         }
     }
