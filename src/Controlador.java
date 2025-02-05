@@ -1,7 +1,5 @@
 import java.io.File;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -105,7 +103,11 @@ public class Controlador {
         fc.getExtensionFilters().addAll(new ExtensionFilter("Video","*.mp4","*.mov","*.avi","*.webm"),new ExtensionFilter("Audio", "*.mp3","*.wav"));
         File arch = fc.showOpenDialog(stage);
         if(arch!=null){
-            setVideo(arch);
+            if(arch.getName().contains(".mp4") || arch.getName().contains(".mov") || arch.getName().contains(".avi") || arch.getName().contains(".webm")){
+                setVideo(arch);
+            } else{
+                setAudio(arch);
+            }
         }
     }
 
@@ -188,7 +190,7 @@ public class Controlador {
     }
 
     public void setVideo(File video){
-        mp = new MediaPlayer(new Media(video.toURI().getPath()));
+        mp = new MediaPlayer(new Media(video.getPath()));
         viewMedia = new MediaView(mp);
         if(mp.getMedia().getWidth()<=mediaBox.getMaxWidth()){
             viewMedia.setFitWidth(mp.getMedia().getWidth());
@@ -203,6 +205,14 @@ public class Controlador {
         viewMedia.setPreserveRatio(true);
         viewMedia.setSmooth(true);
         tituloArchivo.setText(video.getName());
+        progressBar.setProgress(0);
+    }
+
+    public void setAudio(File audio){
+        mp = new MediaPlayer(new Media(audio.getPath()));
+        viewMedia = new MediaView(mp);
+
+        tituloArchivo.setText(audio.getName());
         progressBar.setProgress(0);
     }
     

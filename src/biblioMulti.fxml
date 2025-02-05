@@ -72,7 +72,7 @@
          <children>
             <VBox id="viewBox" fx:id="mediaBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../style/biblioteca.css" VBox.vgrow="ALWAYS">
                <children>
-                  <MediaView id="viewMedia" fx:id="viewMedia" fitHeight="300.0" fitWidth="200.0" preserveRatio="false" VBox.vgrow="ALWAYS" />
+                  <MediaView id="viewMedia" fx:id="viewMedia" fitHeight="300.0" fitWidth="200.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
             <ProgressBar id="barProgress" fx:id="progressBar" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="10.0" stylesheets="@../style/biblioteca.css" />

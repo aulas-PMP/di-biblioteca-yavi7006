@@ -80,3 +80,7 @@
     -fx-color: white;
     color: white;
 }
+
+#barProgress {
+    -fx-accent: red;
+}
