@@ -10,7 +10,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -23,7 +22,8 @@
             <Label id="labelIzq" stylesheets="@../style/biblioteca.css" text="Volumen" textFill="WHITE" VBox.vgrow="ALWAYS" />
             <HBox>
                <children>
-                  <Slider id="volumen" fx:id="sliderVolumen" blockIncrement="5.0" onMouseDragReleased="#cambiarVolumen" prefWidth="100.0" stylesheets="@../style/biblioteca.css" />
+                  <Button id="menosVol" fx:id="menosVol" mnemonicParsing="false" onAction="#menosVolumen" stylesheets="@../style/biblioteca.css" text="-" textFill="WHITE" />
+                  <Button id="masVol" fx:id="masVol" mnemonicParsing="false" onAction="#masVolumen" stylesheets="@../style/biblioteca.css" text="+" textFill="WHITE" />
                   <Button id="muteButton" fx:id="muteButton" mnemonicParsing="false" onAction="#mutear" stylesheets="@../style/biblioteca.css" text="Mute" textFill="WHITE" />
                </children>
             </HBox>

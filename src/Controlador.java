@@ -73,7 +73,10 @@ public class Controlador {
     private ProgressBar progressBar;
 
     @FXML
-    private Slider sliderVolumen;
+    private Button masVol;
+
+    @FXML
+    private Button menosVol;
 
     @FXML
     private Button muteButton;
@@ -91,6 +94,8 @@ public class Controlador {
     private ListView<Button> lista;
 
     private MediaPlayer mp;
+
+    private Media med;
 
     public void setStage(Stage stage){
         this.stage = stage;
@@ -129,6 +134,11 @@ public class Controlador {
             edicion.setPrefWidth(0);
             biblioteca.setPrefWidth(0);
         }
+    }
+
+    @FXML
+    void acercaDe(ActionEvent event){
+
     }
 
     @FXML
@@ -171,11 +181,13 @@ public class Controlador {
     }
 
     @FXML
-    void cambiarVolumen(MouseDragEvent event) {
-        Double volumen = sliderVolumen.getValue();
-        if(mp!=null){
-            mp.setVolume(volumen);
-        }
+    void masVolumen(ActionEvent event) {
+        mp.setVolume(mp.getVolume()+0.1);
+    }
+
+    @FXML
+    void menosVolumen(ActionEvent event) {
+        mp.setVolume(mp.getVolume()-0.1);
     }
 
     @FXML
@@ -190,30 +202,30 @@ public class Controlador {
     }
 
     public void setVideo(File video){
-        mp = new MediaPlayer(new Media(video.getPath()));
-        viewMedia = new MediaView(mp);
-        if(mp.getMedia().getWidth()<=mediaBox.getMaxWidth()){
-            viewMedia.setFitWidth(mp.getMedia().getWidth());
-        } else{
-            viewMedia.setFitWidth(mediaBox.getWidth());
+        try{
+            med = new Media(video.toURI().toString());
+            mp = new MediaPlayer(med);
+            viewMedia = new MediaView(mp);
+            viewMedia.fitWidthProperty().bind(med.widthProperty());
+            viewMedia.fitHeightProperty().bind(med.heightProperty());
+            tituloArchivo.setText(video.getName());
+        } catch(Exception e){
+            System.out.println("Error al abrir el archivo");
         }
-        if(mp.getMedia().getHeight()<=mediaBox.getMaxHeight()){
-            viewMedia.setFitHeight(mp.getMedia().getHeight());
-        } else{
-            viewMedia.setFitHeight(mediaBox.getHeight());
-        }
-        viewMedia.setPreserveRatio(true);
-        viewMedia.setSmooth(true);
-        tituloArchivo.setText(video.getName());
-        progressBar.setProgress(0);
+        
     }
 
     public void setAudio(File audio){
-        mp = new MediaPlayer(new Media(audio.getPath()));
-        viewMedia = new MediaView(mp);
+        try{
+            med = new Media(audio.toURI().toString());
+            mp = new MediaPlayer(med);
+            viewMedia = new MediaView(mp);
 
-        tituloArchivo.setText(audio.getName());
-        progressBar.setProgress(0);
+            tituloArchivo.setText(audio.getName());
+        } catch(Exception e){
+            System.out.println("Error al abrir el archivo");
+        }
+        
     }
     
 
@@ -221,11 +233,8 @@ public class Controlador {
         File[] videos = directorio.listFiles();
         if(videos!=null){
             for(File video : videos){
-                if(video.isDirectory()){
-                    libreria(video);
-                } else{
                     Button bt = new Button();
-                    Media med = new Media(video.toURI().getPath());
+                    Media med = new Media(video.toURI().toString());
                     double duracion = med.getDuration().toSeconds();
                     int horas = (int) duracion/3600;
                     duracion -= horas*3600;
@@ -241,12 +250,12 @@ public class Controlador {
 
                         @Override
                         public void handle(ActionEvent arg0) {
-                            setVideo(new File(bt.getText().substring(0, bt.getText().indexOf(" "))));
+                            setVideo(new File(video.getName()));
                         }
                         
                     });
                     lista.getItems().add(bt);
-                }
+                
             }
         }
     }

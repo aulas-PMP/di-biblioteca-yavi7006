@@ -1,84 +1,66 @@
 #centerbox {
     -fx-background: rgb(150, 0, 0);
-    background: rgb(150, 0, 0);
 }
 
-#playButton, #pauseButton, #stopButton, #muteButton {
+#playButton, #pauseButton, #stopButton, #muteButton, #menosVol, #masVol {
     -fx-background-color: rgb(150, 0, 0);
-    background-color: rgb(150, 0, 0);
     -fx-fill: white;
-    fill: white;
 }
 
 #viewBox {
     -fx-background-color: rgb(150, 0, 0);
-    background-color: rgb(150, 0, 0);
+    
 }
 
 #viewList {
     -fx-background-color: red;
-    background-color: red;
+    
 }
 
 #barMenu {
     -fx-background-color: red;
-    background-color: red;
     -fx-color: white;
-    color: white;
 }
 
 #menu {
     -fx-background: rgb(150, 0, 0);
-    background: rgb(150, 0, 0);
     -fx-color: white;
-    color: white;
 }
 
 #menu:hover {
     -fx-color: white;
-    color: white;
 }
 
 #opcionMenu {
     -fx-background: rgb(150, 0, 0);
-    background: rgb(150, 0, 0);
     -fx-color: white;
-    color: white;
 }
 
 #opcionMenu:hover {
     
     -fx-color: white;
-    color: white;
 }
 
 #tituloArchivo {
     -fx-background-color: red;
-    background-color: red;
     -fx-color: white;
-    color: white;
 }
 
 #izq {
     -fx-background-color: red;
-    background-color: red;
 }
 
 #labelIzq {
     -fx-fill: white;
-    fill: white;
 }
 
 #buttonBox {
     -fx-background-color: red;
-    background-color: red;
 }
 
 #tamano, #velocidad {
     -fx-background-color: rgb(150, 0, 0);
-    background-color: rgb(150, 0, 0);
     -fx-color: white;
-    color: white;
 }
 
 #barProgress {

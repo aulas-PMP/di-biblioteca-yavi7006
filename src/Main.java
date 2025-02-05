@@ -17,6 +17,7 @@ public class Main extends Application{
         primaryStage.setTitle("Biblioteca");
         primaryStage.setScene(new Scene(root,600,600));
         controlador.anadirComboBox();
+        controlador.libreria(new File("vids"));
         primaryStage.show();
         
     }
