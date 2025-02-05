@@ -16,7 +16,6 @@ public class Main extends Application{
         controlador.setStage(primaryStage);
         primaryStage.setTitle("Biblioteca");
         primaryStage.setScene(new Scene(root,600,600));
-        controlador.libreria(new File("vids"));
         primaryStage.show();
         
     }

@@ -18,73 +18,74 @@
 
 <BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador">
    <left>
-      <VBox fx:id="edicion" prefWidth="140.0" BorderPane.alignment="CENTER">
+      <VBox id="izq" fx:id="edicion" prefWidth="140.0" stylesheets="@../style/biblioteca.css" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Volumen" VBox.vgrow="ALWAYS" />
-            <Slider fx:id="sliderVolumen" blockIncrement="5.0" onMouseDragReleased="#cambiarVolumen" VBox.vgrow="ALWAYS" />
-            <Label text="Velocidad" VBox.vgrow="ALWAYS" />
-            <ComboBox fx:id="boxVelocidad" onAction="#cambiarVelocidad" VBox.vgrow="ALWAYS" />
-            <Label text="Tamaño" />
-            <ComboBox fx:id="boxTamano" onAction="#cambiarTamano" />
+            <Label id="labelIzq" stylesheets="@../style/biblioteca.css" text="Volumen" textFill="WHITE" VBox.vgrow="ALWAYS" />
+            <Slider id="volumen" fx:id="sliderVolumen" blockIncrement="5.0" onMouseDragReleased="#cambiarVolumen" stylesheets="@../style/biblioteca.css" VBox.vgrow="ALWAYS" />
+            <Label id="labelIzq" stylesheets="@../style/biblioteca.css" text="Velocidad" textFill="WHITE" VBox.vgrow="ALWAYS" />
+            <ComboBox id="velocidad" fx:id="boxVelocidad" onAction="#cambiarVelocidad" stylesheets="@../style/biblioteca.css" VBox.vgrow="ALWAYS" />
+            <Label id="labelIzq" stylesheets="@../style/biblioteca.css" text="Tamaño" textFill="WHITE" />
+            <ComboBox id="tamano" fx:id="boxTamano" onAction="#cambiarTamano" stylesheets="@../style/biblioteca.css" />
          </children></VBox>
    </left>
    <right>
       <VBox fx:id="biblioteca" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
-            <ListView id="viewList" fx:id="lista" prefWidth="140.0" VBox.vgrow="ALWAYS" />
+            <ListView id="viewList" fx:id="lista" prefWidth="140.0" stylesheets="@../style/biblioteca.css" VBox.vgrow="ALWAYS" />
          </children></VBox>
    </right>
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <MenuBar fx:id="barraMenu" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <MenuBar id="barMenu" fx:id="barraMenu" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../style/biblioteca.css">
               <menus>
-                <Menu mnemonicParsing="false" text="Archivo">
+                <Menu id="menu" mnemonicParsing="false" text="Archivo">
                   <items>
-                    <MenuItem fx:id="abrirArchivo" mnemonicParsing="false" onAction="#abrirArchivo" text="Abrir" />
+                    <MenuItem id="opcionMenu" fx:id="abrirArchivo" mnemonicParsing="false" onAction="#abrirArchivo" text="Abrir" />
+                        <MenuItem id="opcionMenu" mnemonicParsing="false" text="Cerrar" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Biblioteca">
+                <Menu id="menu" mnemonicParsing="false" text="Biblioteca">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Mostrar" />
+                    <MenuItem id="opcionMenu" mnemonicParsing="false" text="Mostrar" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Ver">
+                <Menu id="menu" mnemonicParsing="false" text="Ver">
                   <items>
-                        <CheckMenuItem fx:id="mostrarLat" mnemonicParsing="false" onAction="#mostrarLaterales" text="Mostrar laterales" />
+                        <CheckMenuItem id="opcionMenu" fx:id="mostrarLat" mnemonicParsing="false" onAction="#mostrarLaterales" text="Mostrar laterales" />
                   </items>
                 </Menu>
-                  <Menu mnemonicParsing="false" text="Acerca">
+                  <Menu id="menu" mnemonicParsing="false" text="Acerca">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem id="opcionMenu" mnemonicParsing="false" text="Action 1" />
                     </items>
                   </Menu>
               </menus>
             </MenuBar>
-            <Label fx:id="tituloArchivo" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+            <Label id="tituloArchivo" fx:id="tituloArchivo" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../style/biblioteca.css" text="Titulo" textFill="WHITE" />
          </children>
       </VBox>
    </top>
    <center>
-      <VBox id="centerBox" fx:id="centerBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+      <VBox id="centerBox" fx:id="centerBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../style/biblioteca.css" BorderPane.alignment="CENTER">
          <children>
-            <VBox fx:id="mediaBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+            <VBox id="viewBox" fx:id="mediaBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../style/biblioteca.css" VBox.vgrow="ALWAYS">
                <children>
                   <MediaView id="viewMedia" fx:id="viewMedia" fitHeight="300.0" fitWidth="200.0" preserveRatio="false" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
-            <ProgressBar fx:id="progressBar" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="10.0" />
-            <HBox alignment="CENTER">
+            <ProgressBar id="barProgress" fx:id="progressBar" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="10.0" stylesheets="@../style/biblioteca.css" />
+            <HBox id="buttonBox" alignment="CENTER" stylesheets="@../style/biblioteca.css">
                <children>
-                  <Button id="playButton" fx:id="playButton" mnemonicParsing="false" onAction="#reanudarVideo" stylesheets="@../style/biblioteca.css" text="Play">
+                  <Button id="playButton" fx:id="playButton" mnemonicParsing="false" onAction="#reanudarVideo" stylesheets="@../style/biblioteca.css" text="Play" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#pausarVideo" text="Pause">
+                  <Button id="pauseButton" fx:id="pauseButton" mnemonicParsing="false" onAction="#pausarVideo" stylesheets="@../style/biblioteca.css" text="Pause" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="stopButton" mnemonicParsing="false" onAction="#stopVideo" text="Stop" />
+                  <Button id="stopButton" fx:id="stopButton" mnemonicParsing="false" onAction="#stopVideo" stylesheets="@../style/biblioteca.css" text="Stop" textFill="WHITE" />
                </children>
             </HBox>
          </children>

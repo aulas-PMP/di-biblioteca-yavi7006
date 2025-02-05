@@ -1,19 +1,76 @@
 #centerbox {
-    -fx-background: red;
-    background: red;
+    -fx-background: rgb(150, 0, 0);
+    background: rgb(150, 0, 0);
 }
 
-#playButton {
-    -fx-background-color: blue;
-    background-color: blue;
+#playButton, #pauseButton, #stopButton {
+    -fx-background-color: rgb(150, 0, 0);
+    background-color: rgb(150, 0, 0);
+    -fx-fill: white;
+    fill: white;
 }
 
-#viewMedia {
-    -fx-background: red;
-    background: red;
+#viewBox {
+    -fx-background-color: rgb(150, 0, 0);
+    background-color: rgb(150, 0, 0);
 }
 
 #viewList {
+    -fx-background-color: red;
+    background-color: red;
+}
+
+#barMenu {
+    -fx-background-color: rgb(150, 0, 0);
+    background-color: rgb(150, 0, 0);
+    -fx-color: white;
+    color: white;
+}
+
+#menu {
+    -fx-background: rgb(150, 0, 0);
+    background: rgb(150, 0, 0);
+    -fx-color: white;
+    color: white;
+}
+
+#menu:hover {
     -fx-background: red;
     background: red;
+    -fx-color: white;
+    color: white;
+}
+
+#opcionMenu {
+    -fx-background: rgb(150, 0, 0);
+    background: rgb(150, 0, 0);
+}
+
+#opcionMenu:hover {
+    -fx-background: red;
+    background: red;
+    -fx-color: white;
+    color: white;
+}
+
+#tituloArchivo {
+    -fx-background-color: red;
+    background-color: red;
+    -fx-color: white;
+    color: white;
+}
+
+#izq {
+    -fx-background-color: red;
+    background-color: red;
+}
+
+#labelIzq {
+    -fx-fill: white;
+    fill: white;
+}
+
+#buttonBox {
+    -fx-background-color: red;
+    background-color: red;
 }

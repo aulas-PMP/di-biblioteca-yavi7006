@@ -1,15 +1,9 @@
 import java.io.File;
-import java.io.FilenameFilter;
-import java.nio.file.FileSystem;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -178,6 +172,7 @@ public class Controlador {
         }
         viewMedia.setPreserveRatio(true);
         viewMedia.setSmooth(true);
+        tituloArchivo.setText(video.getName());
         progressBar.progressProperty().bind(null);
         
     }
@@ -190,7 +185,7 @@ public class Controlador {
                     libreria(video);
                 } else{
                     Button bt = new Button();
-                    Media med = new Media(video.getName());
+                    Media med = new Media(video.toURI().getPath());
                     double duracion = med.getDuration().toSeconds();
                     int horas = (int) duracion/3600;
                     duracion -= horas*3600;
@@ -200,7 +195,7 @@ public class Controlador {
                     if(horas>0){
                         bt.setText(video.getName()+" "+horas+":"+minutos+":"+segundos);
                     } else{
-                        bt.setText(video.getName()+" "+horas+":"+minutos+":"+segundos);
+                        bt.setText(video.getName()+" "+minutos+":"+segundos);
                     }
                     bt.setOnAction(new EventHandler<ActionEvent>() {
 
