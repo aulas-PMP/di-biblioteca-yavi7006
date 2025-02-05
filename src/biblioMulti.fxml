@@ -18,10 +18,15 @@
 
 <BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador">
    <left>
-      <VBox id="izq" fx:id="edicion" prefWidth="140.0" stylesheets="@../style/biblioteca.css" BorderPane.alignment="CENTER">
+      <VBox id="izq" fx:id="edicion" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../style/biblioteca.css" BorderPane.alignment="CENTER">
          <children>
             <Label id="labelIzq" stylesheets="@../style/biblioteca.css" text="Volumen" textFill="WHITE" VBox.vgrow="ALWAYS" />
-            <Slider id="volumen" fx:id="sliderVolumen" blockIncrement="5.0" onMouseDragReleased="#cambiarVolumen" stylesheets="@../style/biblioteca.css" VBox.vgrow="ALWAYS" />
+            <HBox>
+               <children>
+                  <Slider id="volumen" fx:id="sliderVolumen" blockIncrement="5.0" onMouseDragReleased="#cambiarVolumen" prefWidth="100.0" stylesheets="@../style/biblioteca.css" />
+                  <Button id="muteButton" fx:id="muteButton" mnemonicParsing="false" onAction="#mutear" stylesheets="@../style/biblioteca.css" text="Mute" textFill="WHITE" />
+               </children>
+            </HBox>
             <Label id="labelIzq" stylesheets="@../style/biblioteca.css" text="Velocidad" textFill="WHITE" VBox.vgrow="ALWAYS" />
             <ComboBox id="velocidad" fx:id="boxVelocidad" onAction="#cambiarVelocidad" stylesheets="@../style/biblioteca.css" VBox.vgrow="ALWAYS" />
             <Label id="labelIzq" stylesheets="@../style/biblioteca.css" text="Tamaño" textFill="WHITE" />
@@ -42,7 +47,7 @@
                 <Menu id="menu" mnemonicParsing="false" text="Archivo">
                   <items>
                     <MenuItem id="opcionMenu" fx:id="abrirArchivo" mnemonicParsing="false" onAction="#abrirArchivo" text="Abrir" />
-                        <MenuItem id="opcionMenu" mnemonicParsing="false" text="Cerrar" />
+                        <MenuItem id="opcionMenu" fx:id="cerrar" mnemonicParsing="false" onAction="#cerrarArchivo" text="Cerrar" />
                   </items>
                 </Menu>
                 <Menu id="menu" mnemonicParsing="false" text="Biblioteca">
@@ -55,11 +60,7 @@
                         <CheckMenuItem id="opcionMenu" fx:id="mostrarLat" mnemonicParsing="false" onAction="#mostrarLaterales" text="Mostrar laterales" />
                   </items>
                 </Menu>
-                  <Menu id="menu" mnemonicParsing="false" text="Acerca">
-                    <items>
-                      <MenuItem id="opcionMenu" mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
+                  <Menu id="menu" fx:id="acercaDe" mnemonicParsing="false" onAction="#acercaDe" text="Acerca" />
               </menus>
             </MenuBar>
             <Label id="tituloArchivo" fx:id="tituloArchivo" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../style/biblioteca.css" text="Titulo" textFill="WHITE" />

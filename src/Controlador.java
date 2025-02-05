@@ -1,5 +1,7 @@
 import java.io.File;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,6 +10,7 @@ import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
@@ -18,7 +21,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 public class Controlador {
 
@@ -26,6 +31,12 @@ public class Controlador {
 
     @FXML
     private MenuItem abrirArchivo;
+
+    @FXML
+    private Menu acercaDe;
+
+    @FXML
+    private MenuItem cerrar;
 
     @FXML
     private MenuBar barraMenu;
@@ -67,6 +78,9 @@ public class Controlador {
     private Slider sliderVolumen;
 
     @FXML
+    private Button muteButton;
+
+    @FXML
     private Button stopButton;
 
     @FXML
@@ -86,7 +100,18 @@ public class Controlador {
 
     @FXML
     void abrirArchivo(ActionEvent event) {
-        
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Abrir archivo");
+        fc.getExtensionFilters().addAll(new ExtensionFilter("Video","*.mp4","*.mov","*.avi","*.webm"),new ExtensionFilter("Audio", "*.mp3","*.wav"));
+        File arch = fc.showOpenDialog(stage);
+        if(arch!=null){
+            setVideo(arch);
+        }
+    }
+
+    @FXML
+    void cerrarArchivo(ActionEvent event) {
+        mp = new MediaPlayer(null);
     }
 
     @FXML
@@ -127,9 +152,6 @@ public class Controlador {
 
     @FXML
     void cambiarVelocidad(ActionEvent event) {
-        if(boxVelocidad.getItems().isEmpty()){
-            boxVelocidad.getItems().addAll("0.25x","0.5x","0.75x","1x","1.25x","1.5x","1.75x","2x");
-        }
         String velocidad = this.boxVelocidad.getSelectionModel().getSelectedItem();
         if(mp!=null){
             mp.setRate(Integer.valueOf(velocidad.replace("x", "")));
@@ -138,9 +160,6 @@ public class Controlador {
 
     @FXML
     void cambiarTamano(ActionEvent event) {
-        if(boxTamano.getItems().isEmpty()){
-            boxTamano.getItems().addAll("50%","75%","100%");
-        }
         String tamano = this.boxTamano.getSelectionModel().getSelectedItem();
         double refTam = Double.parseDouble(tamano.replace("%", ""))/100;
         viewMedia.setFitWidth(viewMedia.getFitWidth()*refTam);
@@ -157,8 +176,19 @@ public class Controlador {
         }
     }
 
+    @FXML
+    void mutear(ActionEvent event) {
+        if(mp!=null){
+            if(mp.isMute()){
+                mp.setMute(false);
+            } else{
+                mp.setMute(true);
+            }
+        }
+    }
+
     public void setVideo(File video){
-        mp = new MediaPlayer(new Media(video.getAbsolutePath()));
+        mp = new MediaPlayer(new Media(video.toURI().getPath()));
         viewMedia = new MediaView(mp);
         if(mp.getMedia().getWidth()<=mediaBox.getMaxWidth()){
             viewMedia.setFitWidth(mp.getMedia().getWidth());
@@ -173,9 +203,9 @@ public class Controlador {
         viewMedia.setPreserveRatio(true);
         viewMedia.setSmooth(true);
         tituloArchivo.setText(video.getName());
-        progressBar.progressProperty().bind(null);
-        
+        progressBar.setProgress(0);
     }
+    
 
     public void libreria(File directorio){
         File[] videos = directorio.listFiles();
@@ -209,5 +239,16 @@ public class Controlador {
                 }
             }
         }
+    }
+
+    public void anadirComboBox(){
+        if(boxVelocidad.getItems().isEmpty()){
+            boxVelocidad.getItems().addAll("0.25x","0.5x","0.75x","1x","1.25x","1.5x","1.75x","2x");
+        }
+        if(boxTamano.getItems().isEmpty()){
+            boxTamano.getItems().addAll("50%","75%","100%");
+        }
+        boxTamano.setEditable(false);
+        boxVelocidad.setEditable(false);
     }
 }

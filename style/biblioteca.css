@@ -3,7 +3,7 @@
     background: rgb(150, 0, 0);
 }
 
-#playButton, #pauseButton, #stopButton {
+#playButton, #pauseButton, #stopButton, #muteButton {
     -fx-background-color: rgb(150, 0, 0);
     background-color: rgb(150, 0, 0);
     -fx-fill: white;
@@ -21,8 +21,8 @@
 }
 
 #barMenu {
-    -fx-background-color: rgb(150, 0, 0);
-    background-color: rgb(150, 0, 0);
+    -fx-background-color: red;
+    background-color: red;
     -fx-color: white;
     color: white;
 }
@@ -35,8 +35,6 @@
 }
 
 #menu:hover {
-    -fx-background: red;
-    background: red;
     -fx-color: white;
     color: white;
 }
@@ -44,11 +42,12 @@
 #opcionMenu {
     -fx-background: rgb(150, 0, 0);
     background: rgb(150, 0, 0);
+    -fx-color: white;
+    color: white;
 }
 
 #opcionMenu:hover {
-    -fx-background: red;
-    background: red;
+    
     -fx-color: white;
     color: white;
 }
@@ -73,4 +72,11 @@
 #buttonBox {
     -fx-background-color: red;
     background-color: red;
+}
+
+#tamano, #velocidad {
+    -fx-background-color: rgb(150, 0, 0);
+    background-color: rgb(150, 0, 0);
+    -fx-color: white;
+    color: white;
 }
